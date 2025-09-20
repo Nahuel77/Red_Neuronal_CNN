@@ -53,14 +53,14 @@ I = [[1, 2, 0],</br>
 K = [[1, 0],</br>
      [0, -1]]</br>
 
-Primer paso (arriba izquierda):
-1*1 + 2*0 + 0*0 + 1*(-1) = 1 + 0 + 0 - 1 = 0
-Segundo paso (arriba derecha):
-2*1 + 0*0 + 1*0 + 3*(-1) = 2 + 0 + 0 - 3 = -1
-Tercer paso (abajo izquierda):
-0*1 + 1*0 + 1*0 + 2*(-1) = 0 + 0 + 0 - 2 = -2
-Cuarto paso (abajo derecha):
-1*1 + 3*0 + 2*0 + 2*(-1) = 1 + 0 + 0 - 2 = -1
+Primer paso (arriba izquierda):</br>
+1*1 + 2*0 + 0*0 + 1*(-1) = 1 + 0 + 0 - 1 = 0</br>
+Segundo paso (arriba derecha):</br>
+2*1 + 0*0 + 1*0 + 3*(-1) = 2 + 0 + 0 - 3 = -1</br>
+Tercer paso (abajo izquierda):</br>
+0*1 + 1*0 + 1*0 + 2*(-1) = 0 + 0 + 0 - 2 = -2</br>
+Cuarto paso (abajo derecha):</br>
+1*1 + 3*0 + 2*0 + 2*(-1) = 1 + 0 + 0 - 2 = -1</br>
 
 Y = [[0, -1],</br>
      [-2, -1]]</br>
