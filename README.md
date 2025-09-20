@@ -54,13 +54,13 @@ K = [[1, 0],</br>
      [0, -1]]</br>
 
 Primer paso (arriba izquierda):</br>
-1*1 + 2*0 + 0*0 + 1*(-1) = 1 + 0 + 0 - 1 = 0</br>
+1x1 + 2x0 + 0x0 + 1x(-1) = 1 + 0 + 0 - 1 = 0</br>
 Segundo paso (arriba derecha):</br>
-2*1 + 0*0 + 1*0 + 3*(-1) = 2 + 0 + 0 - 3 = -1</br>
+2x1 + 0x0 + 1x0 + 3x(-1) = 2 + 0 + 0 - 3 = -1</br>
 Tercer paso (abajo izquierda):</br>
-0*1 + 1*0 + 1*0 + 2*(-1) = 0 + 0 + 0 - 2 = -2</br>
+0x1 + 1x0 + 1x0 + 2x(-1) = 0 + 0 + 0 - 2 = -2</br>
 Cuarto paso (abajo derecha):</br>
-1*1 + 3*0 + 2*0 + 2*(-1) = 1 + 0 + 0 - 2 = -1</br>
+1x1 + 3x0 + 2x0 + 2x(-1) = 1 + 0 + 0 - 2 = -1</br>
 
 Y = [[0, -1],</br>
      [-2, -1]]</br>
