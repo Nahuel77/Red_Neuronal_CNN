@@ -126,48 +126,29 @@ Apagando al azar la mitad de sus neuronas, se garantiza que no entrenara siempre
 
 al correr el modelo se obtuvo un 99,19% de acierto.
 </br>
-┌──────────────────────────────────────┬─────────────────────────────┬─────────────────┐</br>
-│ Layer (type)                         │ Output Shape                │         Param # │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ conv2d (Conv2D)                      │ (None, 26, 26, 32)          │             320 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ max_pooling2d (MaxPooling2D)         │ (None, 13, 13, 32)          │               0 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ conv2d_1 (Conv2D)                    │ (None, 11, 11, 63)          │          18,207 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ max_pooling2d_1 (MaxPooling2D)       │ (None, 5, 5, 63)            │               0 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ flatten (Flatten)                    │ (None, 1575)                │               0 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ dense (Dense)                        │ (None, 128)                 │         201,728 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ dropout (Dropout)                    │ (None, 128)                 │               0 │</br>
-├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
-│ dense_1 (Dense)                      │ (None, 10)                  │           1,290 │</br>
-└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘</br>
  Total params: 221,545 (865.41 KB)</br>
  Trainable params: 221,545 (865.41 KB)</br>
  Non-trainable params: 0 (0.00 B)</br>
 Epoch 1/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m25s←[0m 16ms/step - accuracy: 0.9187 - loss: 0.2621 - val_accuracy: 0.9785 - val_loss: 0.0688</br>
+accuracy: 0.9187 - loss: 0.2621 - val_accuracy: 0.9785 - val_loss: 0.0688</br>
 Epoch 2/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m16s←[0m 15ms/step - accuracy: 0.9728 - loss: 0.0904 - val_accuracy: 0.9854 - val_loss: 0.0433</br>
+accuracy: 0.9728 - loss: 0.0904 - val_accuracy: 0.9854 - val_loss: 0.0433</br>
 Epoch 3/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m19s←[0m 18ms/step - accuracy: 0.9803 - loss: 0.0686 - val_accuracy: 0.9864 - val_loss: 0.0419</br>
+accuracy: 0.9803 - loss: 0.0686 - val_accuracy: 0.9864 - val_loss: 0.0419</br>
 Epoch 4/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m20s←[0m 17ms/step - accuracy: 0.9827 - loss: 0.0562 - val_accuracy: 0.9892 - val_loss: 0.0340</br>
+accuracy: 0.9827 - loss: 0.0562 - val_accuracy: 0.9892 - val_loss: 0.0340</br>
 Epoch 5/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m20s←[0m 16ms/step - accuracy: 0.9860 - loss: 0.0457 - val_accuracy: 0.9886 - val_loss: 0.0376</br>
+accuracy: 0.9860 - loss: 0.0457 - val_accuracy: 0.9886 - val_loss: 0.0376</br>
 Epoch 6/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m17s←[0m 16ms/step - accuracy: 0.9881 - loss: 0.0389 - val_accuracy: 0.9907 - val_loss: 0.0333</br>
+accuracy: 0.9881 - loss: 0.0389 - val_accuracy: 0.9907 - val_loss: 0.0333</br>
 Epoch 7/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m17s←[0m 16ms/step - accuracy: 0.9883 - loss: 0.0371 - val_accuracy: 0.9899 - val_loss: 0.0308</br>
+accuracy: 0.9883 - loss: 0.0371 - val_accuracy: 0.9899 - val_loss: 0.0308</br>
 Epoch 8/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m14s←[0m 14ms/step - accuracy: 0.9897 - loss: 0.0309 - val_accuracy: 0.9868 - val_loss: 0.0412</br>
+accuracy: 0.9897 - loss: 0.0309 - val_accuracy: 0.9868 - val_loss: 0.0412</br>
 Epoch 9/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m14s←[0m 14ms/step - accuracy: 0.9914 - loss: 0.0263 - val_accuracy: 0.9908 - val_loss: 0.0330</br>
+accuracy: 0.9914 - loss: 0.0263 - val_accuracy: 0.9908 - val_loss: 0.0330</br>
 Epoch 10/10</br>
-←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m14s←[0m 14ms/step - accuracy: 0.9920 - loss: 0.0244 - val_accuracy: 0.9919 - val_loss: 0.0321</br>
+accuracy: 0.9920 - loss: 0.0244 - val_accuracy: 0.9919 - val_loss: 0.0321</br>
 </br>
 </br>
 *https://es.wikipedia.org/wiki/Convoluci%C3%B3n
