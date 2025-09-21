@@ -125,6 +125,8 @@ Basicamente no sabra leer variaciones donde un ocho esta escrito de manera que u
 Apagando al azar la mitad de sus neuronas, se garantiza que no entrenara siempre los mismos pesos, produciendo un sobre ajuste.
 
 al correr el modelo se obtuvo un 99,19% de acierto.
+
+</br>
 </br>
  Total params: 221,545 (865.41 KB)</br>
  Trainable params: 221,545 (865.41 KB)</br>
@@ -153,4 +155,4 @@ accuracy: 0.9920 - loss: 0.0244 - val_accuracy: 0.9919 - val_loss: 0.0321</br>
 </br>
 *https://es.wikipedia.org/wiki/Convoluci%C3%B3n
 
-**Ver README.md de La red neuronal MLP.
+**Ver README.md de La red neuronal MLP (https://github.com/Nahuel77/Red_Neuronal_MLP).
