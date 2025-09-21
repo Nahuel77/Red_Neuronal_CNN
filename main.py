@@ -16,8 +16,8 @@ x_train, x_val, y_train, y_val = train_test_split(
     x_train, y_train, test_size=0.2, random_state=42
 )
 
-y_train = to_categorical(y_train, 10)
-y_val = to_categorical(y_val, 10)
+y_train = to_categorical(y_train, 10) #Convierte un valor como 3 en un array [0, 0, 0, 1, 0...]
+y_val = to_categorical(y_val, 10) #lo mismo
 
 # Definir la arquitectura de la CNN
 model = Sequential([

@@ -95,11 +95,81 @@ Pooling de 2x2:
 [[6, 4],</br>
  [2, 4]]</br>
 
-De los 32 mapas resultantes del MaxPooling se vuelve a concolucionar con 63 kernels 3x3. y se vuelve a realizar un MaxPooling 2x2. El esultado son 63 mapas de 11x11
+De los 32 mapas resultantes del MaxPooling se vuelve a concolucionar con 63 kernels 3x3. y se vuelve a realizar un MaxPooling 2x2. El esultado son 63 mapas de 5x5
 
     Conv2D(63, (3, 3), activation='relu'),
     MaxPooling2D((2, 2)),
 
+Podemos y sería mas util pensar, en lugar de en 63 mapas de 5x5, en una sola matriz tridimencional de 63x5x5.
+Esto da un total de 1575 valores en total. 63x5x5=1575
 
+Flatten() se encargara de colocar esos 1575 valores en un solo vector unidimencional. Y la fucnion Dense de conectar esos 1575 valores a 128 neuronas de activacion ReLU**.
 
+       Flatten(),
+       Dense(128, activation='relu'),
+
+Ahora bien. Una diferencia importante de la red anterior MLP a esta red CNN, es que MLP no interpreta las formas visuales de los datos que lee. MLP lleva esos datos a valores, que procesa a modo de estadisitcas.
+Pero CNN va mas alla y usa las estadisticas para intentar "ver" las formas de esas imagenes... Intenta interpretar si la imagen tiene una curva, si tiene una linea reacta, si tiene circulos. Y de esa manera infiere el resultado.
+
+Por esa misma razon, se utiliza una tecnica llamada Dropout para apagar al azar un porcentaje de las 128 neuronas de la capa oculta previa a la salida.
+
+       Dropout(0.5)
+
+Para nuestro caso, se apagará la mitad de esas 128 neuronas, tomando la inferencia de 64 neuronas.
+
+¿Por qué necesitamos hacer esto? Al ser una red que si toma en cuenta las formas visuales, podria sobre ajustar sus pesos a leer siempre patrones muy repetidos en los numeros que infiere. De esa manera no se ajustaría a variaciones de esos numeros.
+
+Imaginemos que los datos de entrenamiento le enseña a la red que un 8 es siempre un circulo unido a otro circulo, ambos de manea vertical. Pues la red entonces sobre ajustara los pesos que le indiquen esa experiencia. Y se acostumbrará demaciado a leer informacion de esos mismos pesos.
+Basicamente no sabra leer variaciones donde un ocho esta escrito de manera que uno o los dos criculos, estan abierto, o estan ligeramente inclinados. Variaciones tipicas de la escritura humana.
+
+Apagando al azar la mitad de sus neuronas, se garantiza que no entrenara siempre los mismos pesos, produciendo un sobre ajuste.
+
+al correr el modelo se obtuvo un 99,19% de acierto.
+</br>
+┌──────────────────────────────────────┬─────────────────────────────┬─────────────────┐</br>
+│ Layer (type)                         │ Output Shape                │         Param # │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ conv2d (Conv2D)                      │ (None, 26, 26, 32)          │             320 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ max_pooling2d (MaxPooling2D)         │ (None, 13, 13, 32)          │               0 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ conv2d_1 (Conv2D)                    │ (None, 11, 11, 63)          │          18,207 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ max_pooling2d_1 (MaxPooling2D)       │ (None, 5, 5, 63)            │               0 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ flatten (Flatten)                    │ (None, 1575)                │               0 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ dense (Dense)                        │ (None, 128)                 │         201,728 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ dropout (Dropout)                    │ (None, 128)                 │               0 │</br>
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤</br>
+│ dense_1 (Dense)                      │ (None, 10)                  │           1,290 │</br>
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘</br>
+ Total params: 221,545 (865.41 KB)</br>
+ Trainable params: 221,545 (865.41 KB)</br>
+ Non-trainable params: 0 (0.00 B)</br>
+Epoch 1/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m25s←[0m 16ms/step - accuracy: 0.9187 - loss: 0.2621 - val_accuracy: 0.9785 - val_loss: 0.0688</br>
+Epoch 2/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m16s←[0m 15ms/step - accuracy: 0.9728 - loss: 0.0904 - val_accuracy: 0.9854 - val_loss: 0.0433</br>
+Epoch 3/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m19s←[0m 18ms/step - accuracy: 0.9803 - loss: 0.0686 - val_accuracy: 0.9864 - val_loss: 0.0419</br>
+Epoch 4/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m20s←[0m 17ms/step - accuracy: 0.9827 - loss: 0.0562 - val_accuracy: 0.9892 - val_loss: 0.0340</br>
+Epoch 5/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m20s←[0m 16ms/step - accuracy: 0.9860 - loss: 0.0457 - val_accuracy: 0.9886 - val_loss: 0.0376</br>
+Epoch 6/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m17s←[0m 16ms/step - accuracy: 0.9881 - loss: 0.0389 - val_accuracy: 0.9907 - val_loss: 0.0333</br>
+Epoch 7/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m17s←[0m 16ms/step - accuracy: 0.9883 - loss: 0.0371 - val_accuracy: 0.9899 - val_loss: 0.0308</br>
+Epoch 8/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m14s←[0m 14ms/step - accuracy: 0.9897 - loss: 0.0309 - val_accuracy: 0.9868 - val_loss: 0.0412</br>
+Epoch 9/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m14s←[0m 14ms/step - accuracy: 0.9914 - loss: 0.0263 - val_accuracy: 0.9908 - val_loss: 0.0330</br>
+Epoch 10/10</br>
+←[1m1050/1050←[0m ←[32m━━━━━━━━━━━━━━━━━━━━←[0m←[37m←[0m ←[1m14s←[0m 14ms/step - accuracy: 0.9920 - loss: 0.0244 - val_accuracy: 0.9919 - val_loss: 0.0321</br>
+</br>
+</br>
 *https://es.wikipedia.org/wiki/Convoluci%C3%B3n
+
+**Ver README.md de La red neuronal MLP.
