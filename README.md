@@ -29,8 +29,10 @@ Softmax (clasificación)</br>
 Si bien la formula puede parecer compleja. Las convoluciones pueden explicarse de una manera simple. Al menos para lo que ocupa el tema en cuestion.
 
 Tenemos una imagen que sera traducida en un mapa con valores entre 0 y 1:
+
     x_train = train.drop(columns=['label']).values / 255.0
     x_train = x_train.reshape(-1, 28, 28, 1)
+    
 Se observa que igual que en MLP tomo los datos del csv, quito la columna label y divido por el valor maximo (255) para normalizar los datos en una escala entre 0 y 1 que representaran la escala de grises de la imagen.
 Luego con reshape transformo ese arreglo de valores en matrices de 28x28. Sobre ese mapa es que se realizara la convolución.
 
