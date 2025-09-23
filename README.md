@@ -75,7 +75,7 @@ En nuestra estructura de capas model = sequencial([]) observamos:
 
 La librería TensorFlow se encargara de hacer las convoluciones aplicando 32 Kernels de tamaño 3x3 sobre el input de 28x28 que es nuestra imagen.
 
-Haciendo las cuentas, de una matriz de 28x28 a la que se convoluciones con kernerls de 3x3, se obtienen salidas de 26x26.
+Haciendo las cuentas, de una matriz de 28x28 a la que se le aplican convoluciones con kernerls de 3x3, se obtienen salidas de 26x26.
 
 A estas salidas se aplica la funcion MaxPooling2D
 
